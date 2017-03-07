@@ -290,3 +290,18 @@ Delete Closed With StoryName
     ${xpathDeleteStory}=    Find Current Window Element    Delete Story    Delete
     Click Element    xpath=${xpathDeleteStory}
     Wait Until Page Contains    Delete Story Success.
+
+Build a Story
+    [Arguments]    ${storyName}    ${estimate}    ${importance}
+    Click Button    xpath=//button[text()="Add Story"]
+    Input Text    xpath=//textarea[@name="Name"]    ${storyName}
+    Input Text    xpath=//input[@name="Estimate"]    ${estimate}
+    Input Text    xpath=//input[@name="Importance"]    ${importance}
+    Click Button    xpath=//button[text()="Submit"]
+
+Check Content
+    [Arguments]    ${line}    ${ID}    ${name}    ${estimate}    ${importance}
+    Should Be Equal    xpath=//table[@class="x-grid3-row-table"][${line}]//td[2]    ${ID}
+    Should Be Equal    xpath=//table[@class="x-grid3-row-table"][${line}]//td[4]    ${name}
+    Should Be Equal    xpath=//table[@class="x-grid3-row-table"][${line}]//td[8]    ${estimate}
+    Should Be Equal    xpath=//table[@class="x-grid3-row-table"][${line}]//td[9]    ${importance}

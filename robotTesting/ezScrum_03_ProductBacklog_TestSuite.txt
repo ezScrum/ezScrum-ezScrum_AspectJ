@@ -314,3 +314,12 @@ Test ProductBacklog - Invailid Change Line
     ${testHowToDemoText}=    Get Text    xpath=//div[@class="x-grid3-cell-inner x-grid3-col-1" and (text()="${storyID}")]/../../../tr[2]/.//b[text()="How To Demo:"]/..
     Should Be Equal    ${testHowToDemoText}    How To Demo:\nHowToDemo: newStory\nChangeLine
     [Teardown]    Test Edit Story Teardown    ${storyID}
+
+Test ProductBacklog - 123
+    [Setup]    Test Product Backlog Create Story Identify Invalid Value Setup
+    Build a Story    story1    8    90
+    ${testLog}=    Get Value    xpath=//table[@class="x-grid3-row-table"][1]//td[2]
+    Log    ${testLog}
+    Check Content    1    1    story1    8    90
+    Build a Story    story2    5    85
+    Check Content    2    2    story2    5    85
