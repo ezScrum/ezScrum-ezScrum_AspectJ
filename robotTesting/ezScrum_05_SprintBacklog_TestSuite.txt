@@ -229,3 +229,30 @@ Test Sprint Backlog - Printable Task
     Compare Text In Specific Xpath    //div[text()="Id"]/../../../../../../../../div[2]/div/div[2]/table/tbody/tr/td[5]    5
     Compare Text In Specific Xpath    //div[text()="Id"]/../../../../../../../../div[2]/div/div[3]/table/tbody/tr/td[5]    5
     [Teardown]    Test Sprint Backlog - Printable Task Teardown
+
+Test Sprint Backlog - Complete Sprint
+    Comment    Set Selenium Speed    0.5
+    Open Browser    ${LOGIN_URL}    Chrome
+    Maximize Browser Window
+    Input Text    xpath = //input[@name='userId']    admin
+    Input Text    xpath = //input[@name="password"]    admin
+    Click Button    xpath=//input[@id="Next"]
+    Click Element    xpath=//div[text()="Project01"]
+    Wait Until Element Is Visible    //a[@class="x-tree-node-anchor"]/span[text()="Product Backlog"]
+    Click Element    //a[@class="x-tree-node-anchor"]/span[text()="Product Backlog"]
+    Click Button    //button[text()="Add Story"]
+    Input Text    //textarea[@name="Name"]    StoryAT
+    Input Text    //input[@name="Estimate"]    8
+    Input Text    //input[@name="Importance"]    100
+    Click Button    //span[text()="Add New Story"]/../../../../../div[2]//button[text()="Submit"]
+    Click Element    //a[@class="x-tree-node-anchor"]/span[text()="Sprint Plan"]
+    Click Button    //button[text()="New Sprint"]
+    Input Text    //textarea[@name="Goal"]    CompleteAT
+    Click Element    //label[text()="Start Date:"]/../div/div/img
+    Click Button    //button[text()="Today"]
+    Input Text    //input[@name="Interval"]    1
+    Input Text    //input[@name="Members"]    4
+    Input Text    //input[@name="AvaliableDays"]    100
+    Input Text    //input[@name="FocusFactor"]    100
+    Click Button    //span[text()="Add New Sprint"]/../../../../../div[2]//button[text()="Submit"]
+    Click Button    //a[@class="x-tree-node-anchor"]/span[text()="Sprint Backlog"]
