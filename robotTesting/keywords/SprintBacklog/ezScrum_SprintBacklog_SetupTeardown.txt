@@ -219,3 +219,12 @@ Test Sprint Backlog - Printable Task Teardown
     Data Base Tear Down
     Close Browser
     Close All Browsers
+
+Check If Invalid Date
+    ${count}=    Get Matching Xpath Count    //span[text()="Invalid Date!!"]
+    ${IsInvalidDate}=    Set Variable If    ${count}==1    true    ${count}!=1    false
+    [Return]    ${IsInvalidDate}
+
+Skip Adding New Sprint
+    Click Button    //button[text()="OK"]
+    Click Button    //span[text()="Add New Sprint"]/../../../../../div[2]//button[text()="Cancel"]
