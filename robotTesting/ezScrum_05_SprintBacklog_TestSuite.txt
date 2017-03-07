@@ -270,7 +270,7 @@ Test Sprint Backlog - Complete Sprint
     Input Text    //input[@name="Estimate"]    8
     Input Text    //input[@name="Importance"]    100
     Click Button    //span[text()="Add New Story"]/../../../../../div[2]//button[text()="Submit"]
-    #新增Task
+    #新增Task1
     Click Element    //table[@id="SprintBacklog_addTaskBtn"]
     Input Text    //input[@name="Name"]    TaskAutoTest
     Comment    Input Text    //label[text()="Estimate:"]/..//input[@name="Estimate"]    8
