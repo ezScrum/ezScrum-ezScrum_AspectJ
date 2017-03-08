@@ -325,4 +325,6 @@ Test ProductBacklog - 123
     Select A Story And Delete    story1
     Comment    ${logTest}=    Get Value
     Comment    Log    ${logTest}
+    Edit Story Importance    story2    95
     Clean Database and Exit ezScrum
+    Close Browser

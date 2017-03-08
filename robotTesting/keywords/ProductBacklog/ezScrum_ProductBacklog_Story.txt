@@ -322,3 +322,10 @@ Select A Story And Delete
     Wait Until Element Is Visible    xpath=//button[text()="Delete"]
     Click Button    xpath=//button[text()="Delete"]
     Comment    \    xpath=//table[@class="x-grid3-row-table"]
+
+Edit Story Importance
+    [Arguments]    ${deleteObjectName}    ${importance}
+    Click Element    //div[text()="${deleteObjectName}"]
+    Click Button    xpath=//button[text()="Edit Story"]
+    Input Text    xpath=//input[@name="Importance"]    ${importance}
+    Click Button    xpath=//button[text()="Submit"]
