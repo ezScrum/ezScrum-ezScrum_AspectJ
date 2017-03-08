@@ -301,19 +301,10 @@ Build a Story
 
 Check Content
     [Arguments]    ${name}    ${ID}    ${estimate}    ${importance}
-    Comment    Should Be Equal    //div[text()="${name}"]    ${name}
-    Comment    Should Be Equal    //div[text()="${name}"]/../..//div[@class="x-grid3-cell-inner x-grid3-col-1"]    ${ID}
-    Comment    Comment    Should Be Equal    //div[text()="${name}"]/../..//div[@class="x-grid3-cell-inner x-grid3-col-6"]
-    Comment    Should Be Equal    //div[text()="${name}"]/../..//div[@class="x-grid3-cell-inner x-grid3-col-7"]    ${estimate}
-    Comment    Should Be Equal    //div[text()="${name}"]/../..//div[@class="x-grid3-cell-inner x-grid3-col-8"]    ${importance}
-    ${testNameText}=    Get Text    //div[text()="${name}"]
-    Should Be Equal    ${testNameText}    ${name}
-    ${testIDText}=    Get Text    //div[text()="${name}"]/../..//div[@class="x-grid3-cell-inner x-grid3-col-1"]
-    Should Be Equal    ${testIDText}    ${ID}
-    ${testEstimateText}=    Get Text    //div[text()="${name}"]/../..//div[@class="x-grid3-cell-inner x-grid3-col-7"]
-    Should Be Equal    ${testEstimateText}    ${estimate}
-    ${testImportanceText}=    Get Text    //div[text()="${name}"]/../..//div[@class="x-grid3-cell-inner x-grid3-col-8"]
-    Should Be Equal    ${testImportanceText}    ${importance}
+    Compare Text In Specific Xpath     //div[text()="${name}"]    ${name}
+    Compare Text In Specific Xpath    //div[text()="${name}"]/../..//div[@class="x-grid3-cell-inner x-grid3-col-1"]    ${ID}
+    Compare Text In Specific Xpath    //div[text()="${name}"]/../..//div[@class="x-grid3-cell-inner x-grid3-col-7"]    ${estimate}
+    Compare Text In Specific Xpath    //div[text()="${name}"]/../..//div[@class="x-grid3-cell-inner x-grid3-col-8"]    ${importance}
 
 Select A Story And Delete
     [Arguments]    ${deleteObjectName}

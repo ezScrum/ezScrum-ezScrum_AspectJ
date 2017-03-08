@@ -323,8 +323,8 @@ Test ProductBacklog - 123
     Check Content    story2    2    5    85
     #delete the story1
     Select A Story And Delete    story1
-    Comment    ${logTest}=    Get Value
-    Comment    Log    ${logTest}
+    #edit  the story2
+    Edit Story Importance    story2    95
     Edit Story Importance    story2    95
     Clean Database and Exit ezScrum
     Close Browser
