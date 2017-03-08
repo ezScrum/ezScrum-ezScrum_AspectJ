@@ -230,50 +230,22 @@ Test Sprint Backlog - Printable Task
     Compare Text In Specific Xpath    //div[text()="Id"]/../../../../../../../../div[2]/div/div[3]/table/tbody/tr/td[5]    5
     [Teardown]    Test Sprint Backlog - Printable Task Teardown
 
-Test Sprint Backlog - Complete Sprint
-    #登入
-    Set Selenium Speed    0.2
-    Open Browser    ${LOGIN_URL}    Chrome
-    Maximize Browser Window
-    Input Text    xpath = //input[@name='userId']    admin
-    Input Text    xpath = //input[@name="password"]    admin
-    Click Button    xpath=//input[@id="Next"]
-    #選取Project
-    Click Element    xpath=//div[text()="Project01"]
-    #新增Story
-    Wait Until Element Is Visible    //a[@class="x-tree-node-anchor"]/span[text()="Product Backlog"]    60
-    Click Element    //a[@class="x-tree-node-anchor"]/span[text()="Product Backlog"]
-    Click Button    //button[text()="Add Story"]
-    Input Text    //textarea[@name="Name"]    StoryAT
-    Input Text    //input[@name="Estimate"]    8
-    Input Text    //input[@name="Importance"]    100
-    Click Button    //span[text()="Add New Story"]/../../../../../div[2]//button[text()="Submit"]
-    #新增Sprint
-    Click Element    //a[@class="x-tree-node-anchor"]/span[text()="Sprint Plan"]
-    Wait Until Element Is Enabled    //button[text()="New Sprint"]    60
-    Click Button    //button[text()="New Sprint"]
-    Input Text    //textarea[@name="Goal"]    CompleteAT
-    Click Element    //label[text()="Start Date:"]/../div/div/img
-    Click Button    //button[text()="Today"]
-    Input Text    //input[@name="Interval"]    1
-    Input Text    //input[@name="Members"]    4
-    Input Text    //input[@name="AvaliableDays"]    100
-    Input Text    //input[@name="FocusFactor"]    100
-    Click Button    //span[text()="Add New Sprint"]/../../../../../div[2]//button[text()="Submit"]
-    ${IsInvalidDate}=    Check If Invalid Date
-    Run Keyword If    "${IsInvalidDate}"=="true"    Skip Adding New Sprint
-    #新增Sprint的Story
-    Click Element    //a[@class="x-tree-node-anchor"]/span[text()="Sprint Backlog"]
-    Wait Until Page Contains    Sprint Backlog Action
-    Click Element    //table[@id="SprintBacklog_addStoryBtn"]
-    Input Text    //textarea[@name="Name"]    AutoTest
-    Input Text    //input[@name="Estimate"]    8
-    Input Text    //input[@name="Importance"]    100
-    Click Button    //span[text()="Add New Story"]/../../../../../div[2]//button[text()="Submit"]
-    #新增Task1
-    Click Element    //table[@id="SprintBacklog_addTaskBtn"]
-    Input Text    //input[@name="Name"]    TaskAutoTest
-    Comment    Input Text    //label[text()="Estimate:"]/..//input[@name="Estimate"]    8
-    Comment    Input Text    //textarea[@name="Notes"]    TaskAutoTest
-    Click Button    //span[text()="Add New Task"]/../../../../../div[2]//button[text()="Submit"]
-    Clean Database and Exit ezScrum
+Test Sprint Backlog - Add Sprint Story And Task
+    [Setup]    Test Sprint Backlog - Add Sprint Story And Task Setup
+    Wait Until Page Contains    Story & Task List
+    Click Element    xpath=//table[@id="SprintBacklog_addStoryBtn"]
+    Input Text    xpath=//textarea[@name="Name"]    AutoTest
+    Input Text    xpath=//input[@name="Value"]    2
+    Input Text    xpath=//input[@name="Estimate"]    8
+    Input Text    xpath=//input[@name="Importance"]    100
+    Click Element    xpath=//span[text()="Add New Story"]/../../../../../div[2]//button[text()="Submit"]
+    Wait Until Page Contains    Story Action
+    Click Element    xpath=//div[text()="AutoTest"]
+    Click Element    xpath=//table[@id="SprintBacklog_addTaskBtn"]
+    Input Text    xpath=//input[@name="Name"]    TaskAutoTest
+    Input Text    //span[text()="Add New Task"]/../../../../../div[@class="x-window-bwrap"]//input[@name="Estimate"]    8
+    Input Text    //span[text()="Add New Task"]/../../../../../div[@class="x-window-bwrap"]//textarea[@name="Notes"]    TaskAutoTest
+    Click Element    xpath=//span[text()="Add New Task"]/../../../../../div[2]//button[text()="Submit"]
+    Verify Task
+    Sleep    2s
+    [Teardown]    Test Sprint Backlog - Add Sprint Story And Task Teardown

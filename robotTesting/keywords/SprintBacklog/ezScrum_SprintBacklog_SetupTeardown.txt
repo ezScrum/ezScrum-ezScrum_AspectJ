@@ -220,11 +220,21 @@ Test Sprint Backlog - Printable Task Teardown
     Close Browser
     Close All Browsers
 
-Check If Invalid Date
-    ${count}=    Get Matching Xpath Count    //span[text()="Invalid Date!!"]
-    ${IsInvalidDate}=    Set Variable If    ${count}==1    true    ${count}!=1    false
-    [Return]    ${IsInvalidDate}
+Test Sprint Backlog - Add Sprint Story And Task Setup
+    Set Selenium Speed    ${SELENIUM_SPEED}
+    #setup
+    Open Browser    ${LOGIN_URL}    ${BROWSER}
+    ${attachFilePath}=    Catenate    SEPARATOR=\\    ${EXECDIR}    TestData    SprintBacklog    Create_Story.sql
+    Load Database    ${DB_URL}    ${DB_NAME}    ${DB_ACCOUNT}    ${DB_PASSWORD}    ${attachFilePath}
+    Maximize Browser Window
+    Input Text    xpath=//input[@name="userId"]    admin
+    Input Text    xpath=//input[@name="password"]    admin
+    Click Button    xpath=//input[@id="Next"]
+    #Select Project
+    Click Element    xpath=//div[text()="ProjectTestSprintStory"]
+    Wait Until Element Is Visible    xpath=//a[@class="x-tree-node-anchor"]/span[text()="Sprint Backlog"]    60
+    Click Element    xpath=//a[@class="x-tree-node-anchor"]/span[text()="Sprint Backlog"]
 
-Skip Adding New Sprint
-    Click Button    //button[text()="OK"]
-    Click Button    //span[text()="Add New Sprint"]/../../../../../div[2]//button[text()="Cancel"]
+Test Sprint Backlog - Add Sprint Story And Task Teardown
+    Clean Database    ${DB_URL}    ${DB_ACCOUNT}    ${DB_PASSWORD}    ${DB_NAME}
+    Close Browser

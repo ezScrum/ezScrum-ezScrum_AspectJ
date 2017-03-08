@@ -82,3 +82,12 @@ Get Task ID In Sprint Backlog
     Wait Until Page Contains Element    xpath=//div[@class="x-treegrid-text" and (text()="${taskName}")]/../../td[1]/a/span    3
     ${taskID}=    Get Text    xpath=//div[@class="x-treegrid-text" and (text()="${taskName}")]/../../td[1]/a/span
     [Return]    ${taskID}
+
+Verify Task
+    ${taskID}=    Get Text    //div[@class="x-treegrid-text" and (text()="TaskAutoTest")]/../../td[1]/a/span
+    Click Element    xpath=//div[text()="TaskAutoTest"]
+    Click Element    xpath=//button[text()="Edit Task"]
+    Compare Field Content    //span[text()="Edit Task #${taskID}"]/../../../../../div[@class="x-window-bwrap"]//input[@name="Name"]    TaskAutoTest
+    Compare Field Content    //span[text()="Edit Task #${taskID}"]/../../../../../div[@class="x-window-bwrap"]//input[@name="Estimate"]    8
+    Compare Field Content    //span[text()="Edit Task #${taskID}"]/../../../../../div[@class="x-window-bwrap"]//textarea[@name="Notes"]    TaskAutoTest
+    Click Element    //span[text()="Edit Task #${taskID}"]/../../../../..//button[text()="Cancel"]
