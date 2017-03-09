@@ -247,5 +247,10 @@ Test Sprint Backlog - Add Sprint Story And Task
     Input Text    //span[text()="Add New Task"]/../../../../../div[@class="x-window-bwrap"]//textarea[@name="Notes"]    TaskAutoTest
     Click Element    xpath=//span[text()="Add New Task"]/../../../../../div[2]//button[text()="Submit"]
     Verify Task
-    Sleep    2s
     [Teardown]    Test Sprint Backlog - Add Sprint Story And Task Teardown
+
+Test Sprint Backlog - Printable Stories and Printable Tasks should be Disabled
+    [Setup]    Test Sprint Backlog - Printable Stories and Printable Tasks should be Disabled Setup
+    Element Should Be Disabled    //button[text()="Printable Stories"]
+    Element Should Be Disabled    //button[text()="Printable Tasks"]
+    [Teardown]    Test Sprint Backlog - Printable Stories and Printable Tasks should be Disabled Teardown
